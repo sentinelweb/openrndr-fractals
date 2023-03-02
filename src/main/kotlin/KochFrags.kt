@@ -12,7 +12,8 @@ vec2 N(float angle) {
 
     // Normalized pixel coordinates (from 0 to 1)
     //vec2 uv = (c_boundsPosition.xy - .5 * c_boundsSize.xy) / c_boundsSize.y;
-    vec2 uv = c_boundsPosition.xy - .5;
+    float aspect = c_boundsSize.x/c_boundsSize.y;
+    vec2 uv = vec2(c_boundsPosition.x*aspect - .85 , c_boundsPosition.y - .5);
     //vec2 mouse = iMouse.xy/c_boundsSize.xy;
     
     uv *= 1.25;

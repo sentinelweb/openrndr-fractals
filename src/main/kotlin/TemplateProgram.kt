@@ -59,8 +59,8 @@ fun main() = application {
 
             drawer.fill = ColorRGBa.PINK
             drawer.stroke = null
-            //drawer.rectangle(0.0, 0.0, width.toDouble(), height.toDouble())
-            drawer.rectangle(width / 2.0 - 100.0, height / 2.0 - 200.0, 400.0, 400.00)
+            drawer.rectangle(0.0, 0.0, width.toDouble(), height.toDouble())
+            //drawer.rectangle(width / 2.0 - 100.0, height / 2.0 - 200.0, 400.0, 400.00)
         }
     }
 }
