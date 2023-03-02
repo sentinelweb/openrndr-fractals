@@ -44,12 +44,12 @@ fun main() = application {
         val image = loadImage("data/images/spidy_liberty_2_512.png")
         image.filter(MinifyingFilter.LINEAR_MIPMAP_NEAREST, MagnifyingFilter.LINEAR)
 
-        val kochFrags = KochFrags()
-
+        //val kochFrags = KochFrags()
+        val kochFrags = GlslLoader().load("data/glsl/koch.glsl")
         extend {
             drawer.shadeStyle = shadeStyle {
-                fragmentPreamble = kochFrags.funs
-                fragmentTransform = kochFrags.shader
+                fragmentPreamble = kochFrags.first
+                fragmentTransform = kochFrags.second
                 parameter("image", image)
                 parameter("time", seconds)
                 parameter("tex_x", settings.x)
