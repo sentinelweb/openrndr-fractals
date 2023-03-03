@@ -31,7 +31,7 @@ fun main() = application {
         var time = 0.0
         val gui = GUI()
         val settings = object {
-            @XYParameter("an XY parameter")
+            @XYParameter("julia coordinate")
             var xy = Vector2(-0.345, 0.654)
 
             @DoubleParameter("speed", 0.001, 0.1)

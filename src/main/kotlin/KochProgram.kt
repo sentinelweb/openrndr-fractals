@@ -3,6 +3,8 @@ import org.openrndr.color.ColorRGBa
 import org.openrndr.draw.*
 import org.openrndr.extra.gui.GUI
 import org.openrndr.extra.parameters.DoubleParameter
+import org.openrndr.extra.parameters.XYParameter
+import org.openrndr.math.Vector2
 
 
 // also : Juilia sets
@@ -20,26 +22,30 @@ import org.openrndr.extra.parameters.DoubleParameter
 
 fun main() = application {
     configure {
-        width = 768
-        height = 576
+        width = 2060
+        height = (width*9.0/16.0).toInt()
     }
 
     program {
         val gui = GUI()
         val settings = object {
-            @DoubleParameter("tex_x", 0.0, 1.0)
-            var x: Double = 0.5
-
-            @DoubleParameter("tex_y", 0.0, 1.0)
-            var y: Double = 0.5
+            @XYParameter("tex coordinate")
+            var xy = Vector2(0.5, 0.5)
 
             @DoubleParameter("scale", 1.0, 10.0)
             var scale: Double = 2.0
+
+//            @DoubleParameter("kockAngle", 0.0, 2.0)
+//            var kochAngle: Double = 2.0/3.0
+//
+//            @DoubleParameter("reflectAngle", 0.0, 2.0)
+//            var reflectAngle: Double = 5.0/6.0
         }
         gui.add(settings, "Settings")
         extend(gui)
 
         val image = loadImage("data/images/spidy_liberty_2_512.png")
+        //val image = loadImage("data/images/spidy_liberty.png")
         image.filter(MinifyingFilter.LINEAR_MIPMAP_NEAREST, MagnifyingFilter.LINEAR)
 
         //val kochFrags = KochFrags()
@@ -50,9 +56,11 @@ fun main() = application {
                 fragmentTransform = kochFrags.second
                 parameter("image", image)
                 parameter("time", seconds)
-                parameter("tex_x", settings.x)
-                parameter("tex_y", settings.y)
+                parameter("tex_x", settings.xy.x)
+                parameter("tex_y", settings.xy.y)
                 parameter("scale", settings.scale.toInt())
+//                parameter("kochAngle", settings.kochAngle)
+//                parameter("reflectAngle", settings.reflectAngle)
             }
 
             drawer.fill = ColorRGBa.PINK
