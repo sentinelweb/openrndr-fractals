@@ -3,8 +3,6 @@ import org.openrndr.color.ColorRGBa
 import org.openrndr.draw.*
 import org.openrndr.extra.gui.GUI
 import org.openrndr.extra.parameters.DoubleParameter
-import kotlin.math.cos
-import kotlin.math.sin
 
 
 // also : Juilia sets
